@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+  dev:
+    build:
+      context: .
+      target: dev
+      dockerfile: Dockerfile
+    container_name: front-dev-container
+    restart: unless-stopped
+    ports:
+      - "80:5173"
+    networks:
+      - frontend
+    env_file:
+      - .env
+    volumes:
+      - ./:/app
+
+  staging:
+    build:
+      context: .
+      target: staging
+      dockerfile: Dockerfile
+    container_name: front-staging-container
+    restart: unless-stopped
+    ports:
+      - "85:4173"
+    networks:
+      - frontend
+    env_file:
+      - .env
+
+  prod:
+    build:
+      context: .
+      target: prod
+      dockerfile: Dockerfile
+    container_name: front-prod-container
+    restart: unless-stopped
+    ports:
+      - "88:4173"
+    networks:
+      - frontend
+    env_file:
+      - .env
+
+networks:
+  frontend:
