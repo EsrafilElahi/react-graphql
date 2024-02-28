@@ -3,7 +3,7 @@ FROM node:20-alpine3.17 as deps
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock ./ 
 
 RUN yarn install
 
