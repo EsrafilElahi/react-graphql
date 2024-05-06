@@ -6,7 +6,7 @@ WORKDIR /app
 COPY package.json yarn.lock ./ 
 
 RUN yarn install
-
+ 
 
 
 # ======================================== Stage 2: run dev mode
